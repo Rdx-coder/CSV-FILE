@@ -1,0 +1,29 @@
+# CSV Upload and View App
+
+This is a simple web application built with Node.js and Express.js that allows users to upload CSV files and view them.
+
+## Features
+
+- Upload CSV files
+- View uploaded CSV files
+- Basic Bootstrap styling for a better user interface
+
+
+## Navigate to the project directory:
+cd csv-upload-view-app
+## Install dependencies:
+npm install
+
+# Start the server:
+npm start
+
+Open your web browser and go to http://localhost:4000 to access the application.
+## Usage
+Click on the "Upload CSV" button to upload a CSV file.
+Once uploaded, you can view the uploaded CSV files on the home page.
+Click on the filename to view the contents of the CSV file.
+Dependencies
+express
+mongoose
+multer
+csv-parser

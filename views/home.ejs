@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV Upload</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light gray background */
+            font-family: Arial, sans-serif; /* Font family */
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .btn-primary {
+            background-color: #007bff; /* Blue button */
+            border-color: #007bff; /* Blue button border */
+        }
+        .btn-primary:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+            border-color: #0056b3; /* Darker blue border on hover */
+        }
+        .custom-file-label {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            background-color: #007bff; /* Blue file input background */
+            color: #fff; /* White text */
+            border-color: #007bff; /* Blue file input border */
+        }
+        .list-group-item {
+            background-color: #ffc107; /* Yellow list group item */
+            border-color: #ffc107; /* Yellow list group item border */
+            color: #212529; /* Black text */
+        }
+        .list-group-item:hover {
+            background-color: #e0a800; /* Darker yellow on hover */
+            border-color: #e0a800; /* Darker yellow border on hover */
+            color: #212529; /* Black text on hover */
+        }
+        .view-link {
+            color: #fff; /* White text for view link */
+            background-color: #28a745; /* Green background for view link */
+            border-color: #28a745; /* Green border for view link */
+        }
+        .view-link:hover {
+            background-color: #218838; /* Darker green on hover */
+            border-color: #218838; /* Darker green border on hover */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <!-- CSV Upload Form -->
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <h3 class="text-center"><i class="fas fa-cloud-upload-alt mr-2"></i>CSV Upload</h3>
+                </div>
+                <div class="card-body">
+                    <form action="/upload" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="csvFile">Select a CSV file to upload:</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="csvFile" name="csv" accept=".csv">
+                                <label class="custom-file-label" for="csvFile">Choose file</label>
+                            </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-primary btn-block">Upload</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Uploaded Files Section -->
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="text-center mb-4"><i class="fas fa-file-csv mr-2"></i>Uploaded Files</h1>
+            <div class="list-group">
+                <!-- Loop through uploaded files -->
+                <% files.forEach(function(file) { %>
+                <a href="/csv/<%= file._id %>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                    <%= file.filename %>
+                    <a href="/csv/<%= file._id %>" class="view-link btn btn-sm"><i class="fas fa-eye mr-2"></i>View</a>
+                </a>
+                <% }); %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS Scripts -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- Font Awesome JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+</body>
+</html>
